@@ -1,0 +1,45 @@
+This hotfix has been developed specifically for you and has not been
+fully tested by Oracle. It is important that you thoroughly test this
+in a staging environment before deploying it to your production
+environment. It has been built against Oracle ATG 10.1.2.
+
+Summary of the problems handled by this hotfix:
+==============================================
+13146252 - In FlexUI Merchandising, Category's list of child Products is incomplete
+18090051 - Regression in defect #13146252 fix; need to handle subtypes correctly
+20256139 - Error in defect #18090051 fix 
+
+
+This hotfix includes the following contents:
+
+jar -xvf p13146252_1012_v3_lib.jar
+  created: META-INF/
+ inflated: META-INF/MANIFEST.MF
+  created: atg/
+  created: atg/adapter/
+  created: atg/adapter/version/
+ inflated: atg/adapter/version/VersionItemDescriptor$1.class
+ inflated: atg/adapter/version/VersionItemDescriptor$CheckoutDependency.class
+ inflated: atg/adapter/version/VersionItemDescriptor$LineHeadCacheKey.class
+ inflated: atg/adapter/version/VersionItemDescriptor$PropertyCheckoutDependency.class
+ inflated: atg/adapter/version/VersionItemDescriptor.class
+ inflated: atg/adapter/version/VersionRepository$1.class
+ inflated: atg/adapter/version/VersionRepository$2.class
+ inflated: atg/adapter/version/VersionRepository$3.class
+ inflated: atg/adapter/version/VersionRepository$4.class
+ inflated: atg/adapter/version/VersionRepository$5.class
+ inflated: atg/adapter/version/VersionRepository$CheckOutLockReleaserSynchronization.class
+ inflated: atg/adapter/version/VersionRepository.class
+ inflated: atg/adapter/version/VersionRepositoryResources.properties
+  created: atg/diff/
+ inflated: atg/diff/PropertyChangeFinder.class
+
+Installation steps
+===========================
+
+I. Hotfix classes
+    (1) Create a hotfix directory and place p13146252_1012_v3_lib.jar into it
+        (e.g., <Temp>/hotfix/p13146252_1012_v3_lib.jar).
+    (2) Recreate and redeploy the ATG EAR file. Use the -prependJars switch with the
+        runAssembler command.           
+        e.g., runAssembler -prependJars <Temp>/hotfix/p13146252_1012_v3_lib.jar <EarFileName> -m <ListOfModules>

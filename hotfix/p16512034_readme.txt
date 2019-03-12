@@ -1,0 +1,30 @@
+This hotfix has been developed specifically for you and has not been fully tested by Oracle. It is important that you thoroughly test this in a
+staging environment before deploying it to your production environment.
+
+Summary of the problems handled by this hotfix:
+==============================================
+16512034 - Search Configuration/redirection not working with en_GB language
+
+This hotfix includes the following contents:
+
+jar -xvf p16512034_1011_v1_lib.jar
+
+  created: META-INF/
+ inflated: META-INF/MANIFEST.MF
+  created: atg/
+  created: atg/repository/
+  created: atg/repository/search/
+  created: atg/repository/search/indexing/
+  created: atg/repository/search/indexing/config/
+ inflated: atg/repository/search/indexing/config/SearchConfigurationXMLGenerator$1.class
+ inflated: atg/repository/search/indexing/config/SearchConfigurationXMLGenerator.class
+
+ 
+Installation steps
+===========================
+
+I. Hotfix classes
+    (1) Create a hotfix directory and place p16512034_1011_v1_lib.jar into it (e.g., <Temp>/hotfix/p16512034_1011_v1_lib.jar).
+    (2) Recreate and redeploy the ATG EAR file. Use the
+            -prependJars switch with the runAssembler command.           
+e.g., runAssembler -prependJars <Temp>/hotfix/p16512034_1011_v1_lib.jar <EarFileName> -m <ListOfModules>

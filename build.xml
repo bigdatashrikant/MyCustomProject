@@ -1,0 +1,26 @@
+<project name="MyCustomProject" default="compile.all">
+	<echo message="${ant.project.name}" />
+	<property file="build.properties" />
+	<!--Add compile task to other modules here -->
+	<target name="compile.all" depends="clean,init,generateEars" description="compile all sub-projects">
+		<tstamp>
+			<format property="current.time"
+					pattern="hh :mm :ss" />
+		</tstamp>
+		<echo>End time:${current.time}</echo>
+	</target>
+	<target name="clean">
+		<echo> Deleting build directory ..</echo>
+		<delete dir="${build.dir}" />
+	</target>
+	<target name="init">
+			<mkdir dir="${build.dir}" />
+			<mkdir dir="${classes.dir}" />
+	</target>
+	<target name="generateEars">
+			<echo>Creating MyCustomProject.ear</echo>
+			<exec executable="${dynamo.home}/bin/runAssembler.bat">
+				<arg line="-prependJars ${${atg.root}/MyCustomProject/hotfix/p16512034_1011_v1_lib.jar -standalone ${runAssembler.ear.dir}/MyCustomProject.ear -m  ${store-prod-module.name}" />
+			</exec>			        
+	</target>
+</project>

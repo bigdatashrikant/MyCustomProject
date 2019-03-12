@@ -1,0 +1,26 @@
+This hotfix has been developed specifically for you and has not been fully tested by Oracle. It is important that you thoroughly test this in a
+staging environment before deploying it to your production environment.
+
+Summary of the problems handled by this hotfix:
+==============================================
+16899782 - values with a decimal point are zeroed when a new condition is added
+
+This hotfix includes the following contents:
+
+jar -xvf p16899782_1012_v1_lib.jar
+  created: atg/remote/
+  created: atg/remote/expreditor/
+  created: atg/remote/expreditor/common/
+  created: atg/remote/expreditor/common/service/
+ inflated: atg/remote/expreditor/common/service/ExpressionEditorService.class
+
+
+
+Installation steps
+===========================
+
+I. Hotfix classes
+    (1) Create a hotfix directory and place p16899782_1012_v1_lib.jar into it (e.g., <Temp>/hotfix/p16899782_1012_v1_lib.jar).
+    (2) Recreate and redeploy the ATG EAR file. Use the
+            -prependJars switch with the runAssembler command.           
+e.g., runAssembler -prependJars <Temp>/hotfix/p16899782_1012_v1_lib.jar <EarFileName> -m <ListOfModules>
