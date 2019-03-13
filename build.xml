@@ -14,13 +14,17 @@
 		<delete dir="${build.dir}" />
 	</target>
 	<target name="init">
-			<mkdir dir="${build.dir}" />
-			<mkdir dir="${classes.dir}" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${classes.dir}" />
 	</target>
 	<target name="generateEars">
-			<echo>Creating MyCustomProject.ear</echo>
-			<exec executable="${dynamo.home}/bin/runAssembler.bat">
-				<arg line="-prependJars ${${atg.root}/MyCustomProject/hotfix/p16512034_1011_v1_lib.jar -standalone ${runAssembler.ear.dir}/MyCustomProject.ear -m  ${store-prod-module.name}" />
-			</exec>			        
+		<echo>Creating ATGProduction.ear</echo>
+		<exec executable="${dynamo.home}/bin/runAssembler.bat">
+			<arg line="-prependJars ${${atg.root}/MyCustomProject/hotfix/p16512034_1011_v1_lib.jar -standalone ${runAssembler.ear.dir}/ATGProduction.ear -m  ${store-prod-module.name}" />
+		</exec>
+		<echo>Creating  ATGPublishing.ear</echo>
+		<exec executable="${dynamo.home}/bin/runAssembler.bat">
+			<arg line="-prependJars ${${atg.root}/MyCustomProject/hotfix/p16512034_1011_v1_lib.jar -standalone ${runAssembler.ear.dir}/ATGPublishing.ear -m  ${store-pub-module.name}" />
+		</exec>
 	</target>
 </project>
